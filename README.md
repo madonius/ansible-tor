@@ -27,7 +27,7 @@ _None._
 * **name**: Name describing the hidden name. _Defaults to **dir** if not defined_
 * **dir**: Directory to store the hidden service configuration. _Defaults to /var/lib/tor/**name** if not defined_
 * **port**: Port to expose to the TOR-Network
-* **source**: The ip-address and port of the service to be exposed _Defualts to 127.0.0.1:**port** if not defined_
+* **service**: The ip-address and port of the service to be exposed _Defualts to 127.0.0.1:**port** if not defined_
 
 ## Dependencies
 
@@ -42,10 +42,10 @@ _None._
     hidden_services:
     - name: ssh-onion
       port: 22
-      source: 127.0.0.1:22
+      service: 127.0.0.1:22
     - dir: /var/lib/tor/https-onion
       port: 443
-      source: 127.0.0.1:443
+      service: 127.0.0.1:443
 ```
 
 ## License
