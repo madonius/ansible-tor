@@ -11,9 +11,7 @@ _None._
 ## Role Variables
 
 ##### ***Mandatory***:
-* **dir**: Location to store the Hidden service configuration
-* **port**: Port to be exposed in the TOR-Network
-* **source**: The ip-address and port of the service to be exposed
+_None._
 
 ##### ***Optional***:
 | Name | Description | Default Value |
@@ -23,6 +21,11 @@ _None._
 | tor_become | whether to become root during the installation | true
 | tor_config_dir | Tor configuration file directory | /etc/tor
 | tor_root_group | Group of the root-User | root
+##### ***Hidden service***
+* **name**: Name describing the hidden name. _Defaults to **dir** if not defined_
+* **dir**: Directory to store the hidden service configuration. _Defaults to /var/lib/tor/**name** if not defined_
+* **port**: Port to expose to the TOR-Network
+* **source**: The ip-address and port of the service to be exposed _Defualts to 127.0.0.1:**port** if not defined_
 
 ## Dependencies
 
