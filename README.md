@@ -40,7 +40,7 @@ _None._
   roles:
     role: tor_hidden_services
     hidden_services:
-    - dir: /var/lib/tor/ssh-onion
+    - name: ssh-onion
       port: 22
       source: 127.0.0.1:22
     - dir: /var/lib/tor/https-onion
