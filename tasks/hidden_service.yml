@@ -1,4 +1,15 @@
 ---
+- name: Check if the hidden service has a directory or name defined
+  fail:
+    msg: "Neither dir nor name are defined for a hidden service"
+  when:
+    - hidden_service.dir is undefined
+    - hidden_service.name is undefined
+
+- name: Check if the service Port is defined
+  fail:
+    msg: "No Port defined for service {{ hidden_service.name }}"
+  when: hidden_service.port
 - name: Generate directory path from name
   set_fact:
     hidden_service.dir: /var/lib/tor/{{ hidden_service.name }}
