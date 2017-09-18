@@ -2,5 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    role: ansible-tor
-    
+    - role: ansible-tor
