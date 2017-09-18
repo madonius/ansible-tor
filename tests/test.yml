@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: role_under_test
+      hidden_services:
+      - dir: /var/lib/tor/ssh-onion
+        port: 22
+        source: 127.0.0.1:22
