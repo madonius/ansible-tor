@@ -6,6 +6,10 @@
     state: installed
   become: "{{ tor_become }}"
 
+  - name: Define the hashed password
+  set_fact:
+    tor_stored_hash: "{{ ansible_local.tor.tor_hashed_password | default(omit)}}"
+    when: ansible_local is defined and ansible_local.tor is defined
 - name: Manage Hidden Service directories
   file:
     path: "{{ item.dir }}"
@@ -17,14 +21,12 @@
     "{{ hidden_services }}"
   when: hidden_services is defined
 
-- set_fact:
-    tor_stored_hash: "{{ ansible_local.tor.tor_hashed_password | default(omit)}}"
-  when: ansible_local is defined and ansible_local.tor is defined
 
 - name: Manage the TOR password
   include: password.yml
 
-- block:
+- name: Start Tor and all hidden services
+  block:
   - name: Tor Service
     service:
       name: tor
