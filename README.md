@@ -21,6 +21,8 @@ _None._
 | tor_become | whether to become root during the installation | true
 | tor_config_dir | Tor configuration file directory | /etc/tor
 | tor_root_group | Group of the root-User | root
+| hidden_services | List of services to be set up | _None_ |
+
 ##### ***Hidden service***
 * **name**: Name describing the hidden name. _Defaults to **dir** if not defined_
 * **dir**: Directory to store the hidden service configuration. _Defaults to /var/lib/tor/**name** if not defined_
