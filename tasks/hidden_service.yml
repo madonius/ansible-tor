@@ -10,15 +10,16 @@
   fail:
     msg: "No Port defined for service {{ hidden_service.name }}"
   when: hidden_service.port
+
 - name: Generate directory path from name
   set_fact:
     hidden_service.dir: /var/lib/tor/{{ hidden_service.name }}
-  when: hidden_service.dir is not defined
+  when: hidden_service.dir is undefined
 
 - name: Set the name from the directory
   set_fact:
     hidden_service.name: {{ hidden_service.dir }}
-  when: hidden_service.name is not defined
+  when: hidden_service.name is undefined
 
 - name: Generate directory for hidden service {{ hidden_service.name }}
   file:
