@@ -13,17 +13,27 @@
 
 - name: Generate directory path from name
   set_fact:
-    hidden_service.dir: /var/lib/tor/{{ hidden_service.name }}
+    hidden_service_dir: /var/lib/tor/{{ hidden_service.name }}
   when: hidden_service.dir is undefined
+
+- name: Set hidden service directory
+  set_fact:
+    hidden_service_dir: "{{ hidden_service.dir }}"
+  when: hidden_service.dir is defined
 
 - name: Set the name from the directory
   set_fact:
-    hidden_service.name: "{{ hidden_service.dir }}"
+    hidden_service_name: "{{ hidden_service_dir }}"
   when: hidden_service.name is undefined
 
-- name: Generate directory for hidden service {{ hidden_service.name }}
+- name: Set the hidden serbvice name
+  set_fact:
+    hidden_service_name: "{{ hidden_service.name }}"
+  when: hidden_service.name is defined
+
+- name: Generate directory for hidden service {{ hidden_service_name }}
   file:
-    path: "{{ hidden_service.dir }}"
+    path: "{{ hidden_service_dir }}"
     owner: "{{ tor_user }}"
     group: "{{ tor_group }}"
     mode: 0700
