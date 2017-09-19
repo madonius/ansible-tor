@@ -20,8 +20,11 @@ DataDirectory {{ tor_data_directory | default("/var/lib/tor") }}
 
 {% if hidden_services is defined %}
 ## Tor Hidden Service configuration
-  {% for service in hidden_services %}
-    ## {{hidden_service.name}}
+  {% for hidden_service in hidden_services %}
+    ##
+    {%- if hidden_service.name is defined -%}
+      {{hidden_service.name}}
+    {%- endif %}
     HiddenServiceDir {{ hidden_service.dir }}
     HiddenServicePort {{hidden_service.port }}
     {%- if hidden_service.service -%}
