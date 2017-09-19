@@ -9,7 +9,7 @@
 - name: Check if the service Port is defined
   fail:
     msg: "No Port defined for service {{ hidden_service.name }}"
-  when: hidden_service.port
+  when: hidden_service.port is undefined
 
 - name: Generate directory path from name
   set_fact:
