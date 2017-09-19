@@ -9,7 +9,7 @@
 - name: Define the hashed password
   set_fact:
     tor_stored_hash: "{{ ansible_local.tor.tor_hashed_password | default(omit)}}"
-    when: ansible_local is defined and ansible_local.tor is defined
+  when: ansible_local is defined and ansible_local.tor is defined
 
 - name: Setup services
   include: hidden_service.yml
