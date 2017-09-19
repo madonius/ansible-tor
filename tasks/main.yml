@@ -1,10 +1,12 @@
 ---
-
 - name: Tor packages
   package:
     name: tor
     state: installed
   become: "{{ tor_become }}"
+
+- name: Setup ditro specific Information
+  include_vars: {{ ansile_os_family }}.yml
 
 - name: Define the hashed password
   set_fact:

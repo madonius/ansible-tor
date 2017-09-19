@@ -1,0 +1,5 @@
+---
+- name: Set tor user and group for Debian-based systems
+  set_facts:
+    tor_user: debian-tor
+    tor_group: debian-tor

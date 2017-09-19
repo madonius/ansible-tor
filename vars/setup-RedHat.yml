@@ -1,0 +1,4 @@
+- name: Set tor user and group for RedHat
+  set_facts:
+    tor_user: tor
+    tor_group: tor
