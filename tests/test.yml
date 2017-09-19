@@ -4,6 +4,6 @@
   roles:
     - role: role_under_test
       hidden_services:
-      - dir: /var/lib/tor/ssh-onion
+      - name: ssh-onion
         port: 22
-        source: 127.0.0.1:22
+        service: 127.0.0.1:22
